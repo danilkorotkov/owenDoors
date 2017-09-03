@@ -67,9 +67,9 @@ class GraphWindow(QtGui.QMainWindow, Ui_MainWindow):
             s = time.localtime(float(t))
             l = lf[i].split('_')[1]
             if l == "1":
-                l = u"6,5 м"
+                l = u"Основная"
             else:
-                l = u"3,5 м"
+                l = u"Шозанах?"
 
             if s.tm_min < 10:
                 minutes = '0' + str(s.tm_min)

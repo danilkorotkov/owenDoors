@@ -1,7 +1,271 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7a0f674-37f3-4888-bbd8-c5227d0c831f" name="Default" comment="" />
+    <list default="true" id="d7a0f674-37f3-4888-bbd8-c5227d0c831f" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MU8test.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OwenSample.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PinCode.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/calibrator.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/calibrator.ui" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1492668028_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1492668126_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1492668393_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1492668638_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1492698358_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1492856767_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493300040_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493403258_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493403279_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493403446_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493403450_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493634858_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493634923_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493635008_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493635056_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493635111_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493635600_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493635636_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493635674_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493635789_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493635826_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493635869_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493635942_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493636013_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493636050_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493636130_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493636704_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493636739_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493637170_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493637174_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493638062_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493638595_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493638632_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493638686_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493638928_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493639787_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493639819_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493639840_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493639892_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493644474_2_80.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493649367_2_100.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493654094_2_100.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493655371_2_120.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493723071_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493738673_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493796216_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493807531_1_170.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493827836_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493828092_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493834072_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493893077_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493906445_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493912155_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493921091_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493991701_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1493992152_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494082549_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494160274_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494172548_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494229098_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494410464_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494431245_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494431979_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494432090_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494432109_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494432208_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494432229_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494496457_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494505311_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494512610_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494519519_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494580698_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494594995_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494595151_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494603419_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494607785_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494672986_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494673089_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494683269_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494752556_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494839872_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494853553_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494866703_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494872683_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494947263_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494955397_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494971623_2_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1494971729_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495022078_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495027481_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495031664_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495036413_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495048164_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495103732_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495117799_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495129795_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495186246_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495198913_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495217002_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495223342_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495273840_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495280329_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495291302_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495299207_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495303512_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495304423_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495305148_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495354974_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495360625_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495453681_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495466872_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495472153_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495530992_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495539630_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495546703_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495551357_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495556157_2_170.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495583221_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495637326_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495646077_2_170.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495661279_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495664972_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495705034_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495716518_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495731553_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495735752_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495740793_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495745056_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495760050_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495806837_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495817805_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495882391_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495893885_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1495975170_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496057871_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496065880_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496069165_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496081517_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496095927_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496100422_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496100699_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496139320_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496150903_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496156473_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496173106_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496178878_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496184381_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496226584_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496228987_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496230630_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496247918_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496253879_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496268882_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496273609_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496282814_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496308979_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496309485_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496317386_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496323067_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496341568_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496392436_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496396913_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496403051_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496408185_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496415403_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496419034_1_0.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496419203_1_0.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496419239_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496427557_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496567121_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496573543_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496657991_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496672077_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496676310_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496741679_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496766345_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496780462_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496829583_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496848072_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496852657_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496857660_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496861317_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496914016_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496917837_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496929491_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496933774_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496938865_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496955041_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496960165_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496967899_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1496994114_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497014466_1_0.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497014475_1_0.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497014489_1_0.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497014511_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497019091_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497028858_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497028885_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497035706_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497050706_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497057450_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497066136_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497099537_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497116382_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497137437_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497143489_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497163551_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497175046_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497186930_1_0.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497186972_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497187004_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497191357_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497196730_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497202433_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497202535_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497205125_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497215126_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497217135_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497217722_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497219405_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497219558_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497220253_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497220288_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497222359_1_0.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497222381_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497242535_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497242632_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497242707_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497242865_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497242920_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497246279_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497246446_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1497249206_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1498027459_2_190.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1498035306_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1498037619_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1499332817_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1499333267_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1499333305_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1499333334_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1499333796_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1499333865_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1499333896_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1499334383_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1499334512_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1499334787_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1499334951_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1499336506_2_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1499338159_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1499361590_1_180.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/1499361811_1_160.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/upurpip.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/graphwindow.py" afterPath="$PROJECT_DIR$/graphwindow.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mainwindow.py" afterPath="$PROJECT_DIR$/mainwindow.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/metro_uic.ui" afterPath="$PROJECT_DIR$/metro_uic.ui" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/metrocss.py" afterPath="$PROJECT_DIR$/metrocss.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.txt" afterPath="$PROJECT_DIR$/settings.txt" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -9,7 +273,57 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/owenDoors$mainwindow.coverage" NAME="mainwindow Coverage Results" MODIFIED="1504438054978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="mainwindow.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mainwindow.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3010">
+              <caret line="910" column="25" lean-forward="true" selection-start-line="910" selection-start-column="25" selection-end-line="910" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="graphwindow.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/graphwindow.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="990">
+              <caret line="71" column="30" lean-forward="false" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="metrocss.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/metrocss.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="19" lean-forward="false" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/metrocss.py" />
+        <option value="$PROJECT_DIR$/settings.txt" />
+        <option value="$PROJECT_DIR$/mainwindow.py" />
+        <option value="$PROJECT_DIR$/graphwindow.py" />
+      </list>
+    </option>
+  </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
@@ -22,6 +336,7 @@
     <option name="width" value="2168" />
     <option name="height" value="1298" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -37,14 +352,27 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="owenDoors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="owenDoors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -57,6 +385,183 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager" selected="Python.mainwindow">
+    <configuration default="false" name="mainwindow" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="owenDoors" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mainwindow.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="owenDoors" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="owenDoors" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="owenDoors" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="owenDoors" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <module name="owenDoors" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="owenDoors" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="owenDoors" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Python.mainwindow" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.mainwindow" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -74,15 +579,16 @@
   <component name="ToolWindowManager">
     <frame x="24" y="32" width="2168" height="1298" extended-state="0" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25211665" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291874" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291874" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25682032" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -104,5 +610,55 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="11" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/metrocss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="19" lean-forward="false" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3010">
+          <caret line="910" column="25" lean-forward="true" selection-start-line="910" selection-start-column="25" selection-end-line="910" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graphwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="71" column="30" lean-forward="false" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

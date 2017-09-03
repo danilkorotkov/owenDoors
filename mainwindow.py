@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import  time, csv, datetime
 import minimalmodbus, sys#, string
-
 minimalmodbus.CLOSE_PORT_AFTER_EACH_CALL = True
 minimalmodbus.TIMEOUT = 0.07
 from PyQt4 import QtCore, QtGui, uic
@@ -34,17 +33,18 @@ DEGREE = u"\u00B0" + 'C'
 portName = '/dev/ttyUSB0'
 baudRate = 57600
 
-Cont1 = 4
-Cont2 = 5
-Fan2 = 3
-Fan1 = 2
 pwmPeriodReg = 32
-SSRPwm1 = 1
+Cont1 = 2
+Fan1 = 2
 SSRPwm0 = 0 #owen MU offset
-
-portTuple = (u'ТТР линии 6.5', u'ТТР линии 3.5',
-             u'Вентилятор  линии 6.5', u'Вентилятор  линии 3.5',
-             u'Контактор  линии 6.5', u'Контактор  линии 3.5')
+portTuple = (u'ТТР линии',
+             u'Вентилятор  линии',
+             u'Контактор  линии'
+             u'Нет подключения',
+             u'Нет подключения',
+             u'Нет подключения',
+             u'Нет подключения',
+             u'Нет подключения')
 
 Freq = 5 #pwm period
 sets = {}
@@ -86,13 +86,11 @@ MMU.serial.baudrate = baudRate
 
 try:
     MMU.write_register(pwmPeriodReg + SSRPwm0, Freq)
-    MMU.write_register(pwmPeriodReg + SSRPwm1, Freq)
     print 'Корректный период ШИМ'
     mModInitStr += u'Корректный период ШИМ,'
 except IOError:
     try:
         MMU.write_register(pwmPeriodReg + SSRPwm0, Freq)
-        MMU.write_register(pwmPeriodReg + SSRPwm1, Freq)
         print 'Корректный период ШИМ'
         mModInitStr += u'Корректный период ШИМ,'
     except IOError:
@@ -101,21 +99,15 @@ except IOError:
 
 try:
     MMU.write_register(SSRPwm0, 0)
-    MMU.write_register(SSRPwm1, 0)
     MMU.write_register(Fan1, 0)
-    MMU.write_register(Fan2, 0)
     MMU.write_register(Cont1, 0)
-    MMU.write_register(Cont2, 0)
     print 'Порты в нуле'
     mModInitStr += u' Порты в нуле'
 except IOError:
     try:
         MMU.write_register(SSRPwm0, 0)
-        MMU.write_register(SSRPwm1, 0)
         MMU.write_register(Fan1, 0)
-        MMU.write_register(Fan2, 0)
         MMU.write_register(Cont1, 0)
-        MMU.write_register(Cont2, 0)
         print 'Порты в нуле'
         mModInitStr += u' Порты в нуле'
     except IOError:
@@ -149,7 +141,7 @@ class TempThread(QtCore.QThread):  # работа с АЦП в потоке
             while portIsBusy:
                 print 'temp busy', portIsBusy
                 time.sleep(0.05)
-            while Ch <= 6:
+            while Ch <= 3:
                 try:
                     portIsBusy = True
                     terr = self.temp_array[Ch][0]
@@ -244,47 +236,31 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     lock_signal = QtCore.pyqtSignal()
 
     Fan1_On = 0  # fan on/off = 0/1
-    Fan2_On = 0
     Line_65 = 0  # line on=1 line off=0
-    Line_35 = 0
     Tarray = np.array([[0.0, 0],
                        [0.0, 0],
-                       [0.0, 0],
-                       [0.0, 0],
-                       [0.0, 0],
-                       [0.0, 0],
                        [0.0, 0]])
-    T1 = T2 = t1 = t2 = 0
+    T1 = t1 = 0
     TRate1 = []  # log набора температуры
-    TRate2 = []
     deltaTRate1 = 0  # хранение текущей скорости роста температуры
-    deltaTRate2 = 0
     iconOn = QtGui.QIcon()
     iconOff = QtGui.QIcon()
     iconLock = QtGui.QIcon()
     iconUnlock = QtGui.QIcon()
     MTemp1 = 0.0  # храним вычисленное значение температуры
-    MTemp2 = 0.0
     WaitText = 'ГОТОВ К ЗАПУСКУ'
     WorkText = 'НАГРЕВ '
     DelayText = 'ВЫДЕРЖКА '
     coldStart1 = 0  # коррекция скорости при отключении датчиков
-    coldStart2 = 0
     coldStart = 0  # запуск программы после загрузки
     Heater1 = 0  # температура тэнов
-    Heater2 = 0
     pwmDelayCounter0 = 0 # 0 можно менять скважность шим
-    pwmDelayCounter1 = 0 # 0 можно менять скважность шим
 
     lockedBut = True
     State1 = 0  # флаги состояния нагрев/выдержка
-    State2 = 0
     justStarted1 = 0  # флаги начала отсчета времени
-    justStarted2 = 0
     startTime1 = 0
-    startTime2 = 0
     countdown1 = 0
-    countdown2 = 0
     level = [0 /100, 25 / 100, 50 / 100, 75 / 100, 100 / 100]
 
     FI = 300
@@ -292,8 +268,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
 
     Fan1Interval = FI  # запуск по 15 через 300 сек
     Fan1Time = FT
-    Fan2Interval = FI
-    Fan2Time = FT
 
     file_name_1 = ''
     file_name_2 = ''
@@ -321,33 +295,21 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self.p1_3.pressed.connect(self.SelectProg)
         self.p1_4.pressed.connect(self.SelectUserProg)
 
-        self.p2_1.pressed.connect(self.SelectProg)
-        self.p2_2.pressed.connect(self.SelectProg)
-        self.p2_3.pressed.connect(self.SelectProg)
-        self.p2_4.pressed.connect(self.SelectUserProg)
         self.user_data_signal.connect(self.set_user_data, QtCore.Qt.QueuedConnection)
 
         # --------------params buttons set--------------------
         self.Over_Heat_Ctrl_1.pressed.connect(self.ParamsSet)
-        self.Over_Heat_Ctrl_2.pressed.connect(self.ParamsSet)
         self.Sensor1_1.pressed.connect(self.ParamsSet)
         self.Sensor1_2.pressed.connect(self.ParamsSet)
-        self.Sensor2_1.pressed.connect(self.ParamsSet)
-        self.Sensor2_2.pressed.connect(self.ParamsSet)
         self.Fan1_Allow.pressed.connect(self.ParamsSet)
-        self.Fan2_Allow.pressed.connect(self.ParamsSet)
 
         # --------------startstop buttons set--------------------
 
         self.StartVirt1.pressed.connect(self.StartStop)
-        self.StartVirt2.pressed.connect(self.StartStop)
         self.StopVirt1.pressed.connect(self.StartStop)
-        self.StopVirt2.pressed.connect(self.StartStop)
 
         # --------------fans buttons set--------------------
         self.Fan1.pressed.connect(self.SetFans)
-        self.Fan2.pressed.connect(self.SetFans)
-
         # --------------history button set--------------------
         self.HistoryGraph.pressed.connect(self.ViewHistory)
 
@@ -377,13 +339,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                 print 'return'
                 return
             else: self.pwmDelayCounter0 = (self.pwmDelayCounter0 + 1) * int(not Stop)
-
-        if port == SSRPwm1:
-            if self.pwmDelayCounter1 >0 and (not Stop):
-                self.pwmDelayCounter1 += 1
-                if self.pwmDelayCounter1 > round(Freq, 0): self.pwmDelayCounter1 = 0
-                return
-            else: self.pwmDelayCounter1 = (self.pwmDelayCounter1 + 1) * int(not Stop)
 
         while portIsBusy:
             print 'pwm busy', portIsBusy
@@ -449,7 +404,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def DoMainWork(self):
         global file_name_1, file_name_2
         i = 0
-        p = 0
         self.CleanAir()
         # it=0
         if self.justStarted1 == 0 and self.Line_65:
@@ -458,13 +412,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
             self.State1 = 0
             self.pwmSet(Cont1, 1)
             file_name_1 = str(int(time.time())) + '_1_' + str(self.T1) + '.txt'
-
-        if self.justStarted2 == 0 and self.Line_35:
-            self.startTime2 = datetime.datetime.now()
-            self.justStarted2 = 1
-            self.State2 = 0
-            self.pwmSet(Cont2, 1)
-            file_name_2 = str(int(time.time())) + '_2_' + str(self.T2) + '.txt'
 
         if self.Line_65 == 1:
             # ---------heaters control------------------------
@@ -538,77 +485,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                     self.pwmSet(Cont1, 0)
             save_log(file_name_1, self.MTemp1, i, self.State1, self.Fan1_On, self.Heater1)
 
-        if self.Line_35 == 1:
-            # ---------heaters control------------------------
-            if self.State2 == 0:
-                delta2 = str(datetime.datetime.now() - self.startTime2)[:7]
-                # ----проверяем границы температура относительно уставки
-                if self.MTemp2 < (self.T2 - 15):
-                    self.pwmSet(SSRPwm1, self.level[4])
-                    p = self.level[4] * 100
-                    self.InfoPanel2.setHtml(metrocss.SetInfoPanelText(self.WorkText + delta2 + " " + str(p) + "%"))
-
-                elif (self.T2 - 15) <= self.MTemp2 < self.T2:
-                    if self.deltaTRate2 >= 5:
-                        self.pwmSet(SSRPwm1, self.level[0])
-                        p = self.level[0] * 100
-                    elif 3 <= self.deltaTRate2 < 5:
-                        self.pwmSet(SSRPwm1, self.level[1])
-                        p = self.level[1] * 100
-                    elif 1 <= self.deltaTRate2 < 3:
-                        self.pwmSet(SSRPwm1, self.level[2])
-                        p = self.level[2] * 100
-                    elif self.deltaTRate2 < 1:
-                        self.pwmSet(SSRPwm1, self.level[4])
-                        p = self.level[4] * 100
-
-                    self.InfoPanel2.setHtml(metrocss.SetInfoPanelText(self.WorkText + delta2 + " " + str(p) + "%"))
-                # ----уходим на выдержку-------------------------
-                elif self.MTemp2 >= self.T2:
-                    self.pwmSet(SSRPwm1, self.level[0])
-                    self.State2 = 1
-                    self.startTime2 = datetime.datetime.now()
-                    self.countdown2 = datetime.timedelta(minutes=self.t2)
-                    delta2 = datetime.datetime.now() - self.startTime2
-                    delta2 = str((self.countdown2 - delta2))[:7]
-                    self.InfoPanel2.setHtml(metrocss.SetInfoPanelText(self.DelayText + str(self.countdown2)[:7]))
-
-            elif self.State2 == 1:
-                delta2 = datetime.datetime.now() - self.startTime2
-
-                # --------обратный отсчет выдержки------------------------
-                if delta2.total_seconds() / 60 <= self.t2:
-                    delta2 = str((self.countdown2 - delta2))[:7]
-
-                    if self.MTemp2 >= self.T2:
-                        self.pwmSet(SSRPwm1, self.level[0])
-                        p = self.level[0] * 100
-                    elif (self.T2 - 1) <= self.MTemp2 < self.T2:
-                        self.pwmSet(SSRPwm1, self.level[1])
-                        p = self.level[1] * 100
-                    elif (self.T2 - 2) <= self.MTemp2 < (self.T2 - 1):
-                        self.pwmSet(SSRPwm1, self.level[2])
-                        p = self.level[2] * 100
-                    elif (self.T2 - 4) <= self.MTemp2 < (self.T2 - 2):
-                        self.pwmSet(SSRPwm1, self.level[3])
-                        p = self.level[3] * 100
-                    elif (self.T2 - 4) > self.MTemp2:
-                        self.pwmSet(SSRPwm1, self.level[4])
-                        p = self.level[4] * 100
-                    self.InfoPanel2.setHtml(metrocss.SetInfoPanelText(self.DelayText + delta2 + " " + str(p) + "%"))
-
-                # --------работа сделана------------------------
-                elif delta2.total_seconds() / 60 > self.t2:
-                    self.StartButton2.setStyleSheet(metrocss.StartButton_active)
-                    self.StopButton2.setStyleSheet(metrocss.StopButton_passive)
-                    self.setWorkzonePassive('2')
-                    self.Line_35 = 0
-                    self.InfoPanel2.setHtml(metrocss.SetInfoPanelText(self.WaitText))
-                    self.pwmSet(SSRPwm1, self.level[0], Stop=True)
-                    self.State2 = 0
-                    self.justStarted2 = 0
-                    self.pwmSet(Cont2, 0)
-            save_log(file_name_2, self.MTemp2, p, self.State2, self.Fan2_On, self.Heater2)
 
     @pyqtSlot()
     def CleanAir(self):  # работа вентиляторов в цикле полимеризации
@@ -629,23 +505,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                         self.SetFans(1)
                     else:
                         pass
-        if sets['Fan2_Allow'] == 1 and self.Line_35 == 1 and (round(self.MTemp2) in range(150, 200)):
-            if self.Fan2Interval > 0:
-                self.Fan2Interval -= 1
-            elif self.Fan2Interval == 0:
-                if self.Fan2Time > 0:
-                    self.Fan2Time -= 1
-                    if self.Fan2_On:
-                        pass
-                    else:
-                        self.SetFans(2)
-                elif self.Fan2Time == 0:
-                    self.Fan2Interval = FI
-                    self.Fan2Time = FT
-                    if self.Fan2_On:
-                        self.SetFans(2)
-                    else:
-                        pass
 
     def SetFans(self, Line=0):  # триггер вентиляторов
         if Line == 1:
@@ -658,15 +517,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                 self.pwmSet(Fan1, self.Fan1_On)
                 self.Fan1.setIcon(self.iconOff)
 
-        elif Line == 2:
-            if self.Fan2_On == 0:
-                self.Fan2_On = 1
-                self.pwmSet(Fan2, self.Fan2_On)
-                self.Fan2.setIcon(self.iconOn)
-            else:
-                self.Fan2_On = 0
-                self.pwmSet(Fan2, self.Fan2_On)
-                self.Fan2.setIcon(self.iconOff)
         else:
             sender = self.sender()
             if sender == self.Fan1:
@@ -678,25 +528,12 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                     sender.setIcon(self.iconOff)
                     self.Fan1_On = 0
                     self.pwmSet(Fan1, self.Fan1_On)
-            else:
-                if self.Fan2_On == 0:
-                    sender.setIcon(self.iconOn)
-                    self.Fan2_On = 1
-                    self.pwmSet(Fan2, self.Fan2_On)
-                else:
-                    sender.setIcon(self.iconOff)
-                    self.Fan2_On = 0
-                    self.pwmSet(Fan2, self.Fan2_On)
 
     def setWorkzonePassive(self, point):  # ожидающая рабочая зона
         if point == '1':
             self.Channel1.setStyleSheet(metrocss.Channel_waiting)
             self.Channel2.setStyleSheet(metrocss.Channel_waiting)
             self.Channel3.setStyleSheet(metrocss.Channel_waiting)
-        else:
-            self.Channel4.setStyleSheet(metrocss.Channel_waiting)
-            self.Channel5.setStyleSheet(metrocss.Channel_waiting)
-            self.Channel6.setStyleSheet(metrocss.Channel_waiting)
 
         getattr(self, 'Counter' + str(point)).setStyleSheet(metrocss.Rate_Counter_waiting)
         getattr(self, 'Rate' + str(point)).setStyleSheet(metrocss.Rate_Counter_waiting)
@@ -710,10 +547,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
             self.Channel1.setStyleSheet(metrocss.Channel_working)
             self.Channel2.setStyleSheet(metrocss.Channel_working)
             self.Channel3.setStyleSheet(metrocss.Channel_working)
-        else:
-            self.Channel4.setStyleSheet(metrocss.Channel_working)
-            self.Channel5.setStyleSheet(metrocss.Channel_working)
-            self.Channel6.setStyleSheet(metrocss.Channel_working)
 
         getattr(self, 'Counter' + str(point)).setStyleSheet(metrocss.Rate_Counter_working)
         getattr(self, 'Rate' + str(point)).setStyleSheet(metrocss.Rate_Counter_working)
@@ -741,15 +574,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                 self.Counter1.setHtml(metrocss.Show_Counter(sets['Counter1']))
                 save_settings(sets)
 
-            elif point == '2' and self.Line_35 == 0:
-                self.StartButton2.setStyleSheet(metrocss.StartButton_passive)
-                self.StopButton2.setStyleSheet(metrocss.StopButton_active)
-                self.setWorkzoneActive(point)
-                self.Line_35 = 1
-                sets['Counter2'] += 1
-                self.Counter2.setHtml(metrocss.Show_Counter(sets['Counter2']))
-                save_settings(sets)
-
         elif name[:4] == 'Stop':
             if point == '1' and self.Line_65 == 1:
                 self.StartButton1.setStyleSheet(metrocss.StartButton_active)
@@ -766,22 +590,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                 self.Fan1Interval = FI
                 self.Fan1Time = FT
                 if self.Fan1_On: self.SetFans(1)
-
-            elif point == '2' and self.Line_35 == 1:
-                self.StartButton2.setStyleSheet(metrocss.StartButton_active)
-                self.StopButton2.setStyleSheet(metrocss.StopButton_passive)
-                self.setWorkzonePassive(point)
-                self.Line_35 = 0
-                self.InfoPanel2.setHtml(metrocss.SetInfoPanelText(self.WaitText))
-                self.pwmSet(SSRPwm1, 0, Stop=True)
-                self.startHeat2 = 0
-                self.startDelay2 = 0
-                self.justStarted2 = 0
-                self.pwmSet(Cont2, 0)
-
-                self.Fan2Interval = FI
-                self.Fan2Time = FT
-                if self.Fan2_On: self.SetFans(2)
 
     def All_is_Clear(self):  # корректное завершение
         self.tempthreadcontrol(0)
@@ -804,14 +612,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
             else:
                 self.Over_Heat_Ctrl_1.setStyleSheet(metrocss.SetButtons_active)
                 sets['OH_ctrl_1'] = 1
-
-        if sender == self.Over_Heat_Ctrl_2:
-            if sets['OH_ctrl_2'] == 1:
-                self.Over_Heat_Ctrl_2.setStyleSheet(metrocss.SetButtons_passive)
-                sets['OH_ctrl_2'] = 0
-            else:
-                self.Over_Heat_Ctrl_2.setStyleSheet(metrocss.SetButtons_active)
-                sets['OH_ctrl_2'] = 1
 
         # ---------------main sensors------------------
         if sender == self.Sensor1_1:
@@ -838,30 +638,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                 self.Sensor1_2.setStyleSheet(metrocss.SetButtons_active)
                 sets['sensor1_2'] = 1
 
-        if sender == self.Sensor2_1:
-            self.coldStart2 = 0
-            if sets['sensor2_1'] == 1:
-                self.Sensor2_1.setStyleSheet(metrocss.SetButtons_passive)
-                sets['sensor2_1'] = 0
-                if sets['sensor2_2'] == 0:
-                    self.Sensor2_2.setStyleSheet(metrocss.SetButtons_active)
-                    sets['sensor2_2'] = 1
-            else:
-                self.Sensor2_1.setStyleSheet(metrocss.SetButtons_active)
-                sets['sensor2_1'] = 1
-
-        if sender == self.Sensor2_2:
-            self.coldStart2 = 0
-            if sets['sensor2_2'] == 1:
-                self.Sensor2_2.setStyleSheet(metrocss.SetButtons_passive)
-                sets['sensor2_2'] = 0
-                if sets['sensor2_1'] == 0:
-                    self.Sensor2_1.setStyleSheet(metrocss.SetButtons_active)
-                    sets['sensor2_1'] = 1
-            else:
-                self.Sensor2_2.setStyleSheet(metrocss.SetButtons_active)
-                sets['sensor2_2'] = 1
-
         # --------------------Fan Prams------------------------
         if sender == self.Fan1_Allow:
             if sets['Fan1_Allow'] == 1:
@@ -875,18 +651,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                 self.Fan1_Allow.setStyleSheet(metrocss.SetButtons_active)
                 sets['Fan1_Allow'] = 1
 
-        if sender == self.Fan2_Allow:
-            if sets['Fan2_Allow'] == 1:
-                self.Fan2_Allow.setStyleSheet(metrocss.SetButtons_passive)
-                sets['Fan2_Allow'] = 0
-                if self.Line_35:
-                    self.Fan2Interval = FI
-                    self.Fan2Time = FT
-                    if self.Fan2_On: self.SetFans(2)
-            else:
-                self.Fan2_Allow.setStyleSheet(metrocss.SetButtons_active)
-                sets['Fan2_Allow'] = 1
-
         save_settings(sets)
 
     def set_user_data(self, T, t):  # ловля сигнала модального окна ввода настроек температуры и выдержки
@@ -895,11 +659,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
             self.SetDelay1.setHtml(metrocss.setdelay(t))
             self.T1 = T
             self.t1 = t
-        if self.point == 2:
-            self.SetTemp2.setHtml(metrocss.settemp(T))
-            self.SetDelay2.setHtml(metrocss.setdelay(t))
-            self.T2 = T
-            self.t2 = t
 
     @pyqtSlot()
     def SelectUserProg(self):  # отработка нажатия кнопки пользовательская программа
@@ -914,13 +673,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
             self.AskWindow.show()
             self.AskWindow.move(313, 195)
 
-        if self.point == 2 and self.Line_35 == 0:
-            self.clear_buttons(self.point)
-            sender.setStyleSheet(metrocss.prog_active)
-            self.AskWindow = UserData(self.user_data_signal, self)
-            self.AskWindow.show()
-            self.AskWindow.move(313, 195)
-
     @pyqtSlot()
     def SelectProg(self):  # кнопки выбора программ
         sender = self.sender()
@@ -929,14 +681,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
             if self.Line_65 == 0:
                 prog = int(name[3])
                 line = 1
-                self.set_prog(prog, line)
-            else:
-                pass
-
-        if name[1] == '2':
-            if self.Line_35 == 0:
-                prog = int(name[3])
-                line = 2
                 self.set_prog(prog, line)
             else:
                 pass
@@ -975,9 +719,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         alph = self.coldStart1 & 1
         alph = 2 - int(not alph)
 
-        bet = self.coldStart2 & 1
-        bet = 2 - int(not bet)
-
         # -------------рассчитываем температуры по разрешенным датчикам---------
         if sets['sensor1_1'] == 1 and sets['sensor1_2'] == 1:
             self.MTemp1 = (self.MTemp1 * self.coldStart1 + (Tin[1][0] + Tin[2][0]) / 2) / alph
@@ -996,36 +737,17 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
             self.Channel2.setHtml(metrocss.Show_temp("NaN"))
 
         self.Channel3.setHtml(metrocss.Show_temp(Tin[3][0]))  # Тэны всегда!
-        self.Channel6.setHtml(metrocss.Show_temp(Tin[6][0]))
-        self.Heater1 = Tin[3][0]
-        self.Heater2 = Tin[6][0]
 
-        if sets['sensor2_1'] == 1 and sets['sensor2_2'] == 1:
-            self.MTemp2 = (self.MTemp2 * self.coldStart2 + (Tin[4][0] + Tin[5][0]) / 2) / bet
-            self.MainTemp2.setHtml(metrocss.Show_Main_Temp("%.1f" % self.MTemp2))
-            self.Channel4.setHtml(metrocss.Show_temp(Tin[4][0]))
-            self.Channel5.setHtml(metrocss.Show_temp(Tin[5][0]))
-        elif sets['sensor2_1'] == 0 and sets['sensor2_2'] == 1:
-            self.MTemp2 = (self.MTemp2 * self.coldStart2 + Tin[5][0]) / bet
-            self.MainTemp2.setHtml(metrocss.Show_Main_Temp("%.1f" % self.MTemp2))
-            self.Channel4.setHtml(metrocss.Show_temp("NaN"))
-            self.Channel5.setHtml(metrocss.Show_temp(Tin[5][0]))
-        elif sets['sensor2_1'] == 1 and sets['sensor2_2'] == 0:
-            self.MTemp2 = (self.MTemp2 * self.coldStart2 + Tin[4][0]) / bet
-            self.MainTemp2.setHtml(metrocss.Show_Main_Temp("%.1f" % self.MTemp2))
-            self.Channel4.setHtml(metrocss.Show_temp(Tin[4][0]))
-            self.Channel5.setHtml(metrocss.Show_temp("NaN"))
+        self.Heater1 = Tin[3][0]
 
         # -------------работаем со стеком значений температур---------
         if self.coldStart == 0:
             for i in range(60):
                 self.TRate1.append(self.MTemp1)
-                self.TRate2.append(self.MTemp2)
 
             self.coldStart = 1
         else:
             self.TRate1.append(self.MTemp1)
-            self.TRate2.append(self.MTemp2)
 
         if self.coldStart1 == 0:
             self.TRate1 = []
@@ -1033,18 +755,11 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                 self.TRate1.append(self.MTemp1)
             self.coldStart1 = 1
 
-        if self.coldStart2 == 0:
-            self.TRate2 = []
-            for i in range(60):
-                self.TRate2.append(self.MTemp2)
-            self.coldStart2 = 1
 
         # -------------вычисляем скорость изменения температуры по стеку---------
         self.deltaTRate1 = (self.deltaTRate1 + self.MTemp1 - self.TRate1.pop(0)) / 2
-        self.deltaTRate2 = (self.deltaTRate2 + self.MTemp2 - self.TRate2.pop(0)) / 2
 
         self.Rate1.setHtml(metrocss.Show_Rate(self.deltaTRate1))
-        self.Rate2.setHtml(metrocss.Show_Rate(self.deltaTRate2))
 
         # -----вызываем обработку состояния вкл/выкл линии по полученным данным----
         self.DoMainWork()
@@ -1068,11 +783,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
             self.p1_2.setStyleSheet(metrocss.prog_passive)
             self.p1_3.setStyleSheet(metrocss.prog_passive)
             self.p1_4.setStyleSheet(metrocss.prog_passive)
-        if line == 2:
-            self.p2_1.setStyleSheet(metrocss.prog_passive)
-            self.p2_2.setStyleSheet(metrocss.prog_passive)
-            self.p2_3.setStyleSheet(metrocss.prog_passive)
-            self.p2_4.setStyleSheet(metrocss.prog_passive)
 
     def set_prog(self, prog, line):  # подпрограммы кнопок переключения программы
         if line == 1:
@@ -1098,30 +808,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                 self.T1 = 200
                 self.t1 = 10
                 sets['start_prog1'] = 3
-
-        if line == 2:
-            self.clear_buttons(2)
-            if prog == 1:
-                self.p2_1.setStyleSheet(metrocss.prog_active)
-                self.SetTemp2.setHtml(metrocss.settemp(180))
-                self.SetDelay2.setHtml(metrocss.setdelay(15))
-                self.T2 = 180
-                self.t2 = 15
-                sets['start_prog2'] = 1
-            if prog == 2:
-                self.p2_2.setStyleSheet(metrocss.prog_active)
-                self.SetTemp2.setHtml(metrocss.settemp(190))
-                self.SetDelay2.setHtml(metrocss.setdelay(10))
-                self.T2 = 190
-                self.t2 = 10
-                sets['start_prog2'] = 2
-            if prog == 3:
-                self.p2_3.setStyleSheet(metrocss.prog_active)
-                self.SetTemp2.setHtml(metrocss.settemp(200))
-                self.SetDelay2.setHtml(metrocss.setdelay(10))
-                self.T2 = 200
-                self.t2 = 10
-                sets['start_prog2'] = 3
 
         save_settings(sets)
 
@@ -1151,19 +837,9 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         if sets['start_prog1'] == 3:
             self.set_prog(3, 1)
 
-        if sets['start_prog2'] == 1:
-            self.set_prog(1, 2)
-        if sets['start_prog2'] == 2:
-            self.set_prog(2, 2)
-        if sets['start_prog2'] == 3:
-            self.set_prog(3, 2)
-
         # ---------heaters set--------------------
         if sets['OH_ctrl_1'] == 1:
             self.Over_Heat_Ctrl_1.setStyleSheet(metrocss.SetButtons_active)
-
-        if sets['OH_ctrl_2'] == 1:
-            self.Over_Heat_Ctrl_2.setStyleSheet(metrocss.SetButtons_active)
 
         if sets['sensor1_1'] == 1:
             self.Sensor1_1.setStyleSheet(metrocss.SetButtons_active)
@@ -1171,47 +847,29 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         if sets['sensor1_2'] == 1:
             self.Sensor1_2.setStyleSheet(metrocss.SetButtons_active)
 
-        if sets['sensor2_1'] == 1:
-            self.Sensor2_1.setStyleSheet(metrocss.SetButtons_active)
-
-        if sets['sensor2_2'] == 1:
-            self.Sensor2_2.setStyleSheet(metrocss.SetButtons_active)
-
         # ---------fans set--------------------
         if sets['Fan1_Allow'] == 1:
             self.Fan1_Allow.setStyleSheet(metrocss.SetButtons_active)
 
-        if sets['Fan2_Allow'] == 1:
-            self.Fan2_Allow.setStyleSheet(metrocss.SetButtons_active)
-
         # ---------counter set--------------------
         self.Counter1.setHtml(metrocss.Show_Counter(sets['Counter1']))
-        self.Counter2.setHtml(metrocss.Show_Counter(sets['Counter2']))
 
         # ---------Infopanel set--------------------
         self.InfoPanel1.setHtml(metrocss.SetInfoPanelText(self.WaitText))
-        self.InfoPanel2.setHtml(metrocss.SetInfoPanelText(self.WaitText))
 
     def SetVirtualButtons(self):  # рисуем кнопки с длинным нажатием
 
         self.StartVirt1 = LongButton(self.centralwidget, name="StartVirt1")
-        self.StartVirt1.setGeometry(QtCore.QRect(15, 75, 134, 139))
+        self.StartVirt1.setGeometry(QtCore.QRect(325, 202, 134, 139))
         self.setButProps(self.StartVirt1)
 
         self.StopVirt1 = LongButton(self.centralwidget, name="StopVirt1")
-        self.StopVirt1.setGeometry(QtCore.QRect(15, 227, 134, 139))
+        self.StopVirt1.setGeometry(QtCore.QRect(325, 354, 134, 139))
         self.setButProps(self.StopVirt1)
 
-        self.StartVirt2 = LongButton(self.centralwidget, name="StartVirt2")
-        self.StartVirt2.setGeometry(QtCore.QRect(651, 75, 134, 139))
-        self.setButProps(self.StartVirt2)
-
-        self.StopVirt2 = LongButton(self.centralwidget, name="StopVirt2")
-        self.StopVirt2.setGeometry(QtCore.QRect(651, 227, 134, 139))
-        self.setButProps(self.StopVirt2)
 
         self.lockVirt = LongButton(self.centralwidget, name="lockVirt")
-        self.lockVirt.setGeometry(QtCore.QRect(322, 836, 150, 148))
+        self.lockVirt.setGeometry(QtCore.QRect(717, 790, 150, 148))
         self.setButProps(self.lockVirt)
 
     def setButProps(self, obj):
@@ -1247,17 +905,8 @@ def read_settings():
                 try:
                     sets[k] = int(v)
                 except ValueError:
-                    line = v
-                    line = line.replace('[', '')
-                    line = line.replace(']', '')
-                    sets[k] = line.split(",")
-                    s = len(sets[k])
-                    i = 0
-                    while i < s:
-                        x = sets[k][i]
-                        x = float(x)
-                        sets[k][i] = x
-                        i += 1
+                    pass
+
     except IOError:
         sets = metrocss.a
         save_settings(sets)
