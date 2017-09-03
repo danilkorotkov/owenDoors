@@ -1,0 +1,42 @@
+<!DOCTYPE XUPProject>
+<!--
+###########################################################################################
+##      Created using Monkey Studio IDE v1.9.0.4 (1.9.0.4)
+##
+##  Author    : danil@kupizabor.ru
+##  Project   : owen control
+##  FileName  : owen control.xpythonqt
+##  Date      : 2017-03-29T23:41:28
+##  License   : $License$
+##  Comment   : $Comment$
+##  Home Page : http://www.kupizabor.ru
+##
+##  This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
+##  WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+##
+###########################################################################################
+-->
+<project version="1.1.0" name="owen control">
+    <variable name="XUP.MAIN_FILE">
+        <value>metro_uic.py</value>
+    </variable>
+    <variable name="PYTHON_FILES">
+        <file>metro_uic.py</file>
+        <file>mainwindow.py</file>
+        <file>metrocss.py</file>
+        <file>UserData.py</file>
+        <file>LongButton.py</file>
+        <file>graphwindow.py</file>
+        <file>PinCode.py</file>
+        <file>calibrator.py</file>
+        <file>timelabel.py</file>
+        <file>TOwen/Owen.py</file>
+        <file>TOwen/owenProtocol.py</file>
+    </variable>
+    <variable name="FORMS">
+        <file>metro_uic.ui</file>
+        <file>datainput.ui</file>
+        <file>graphwindow.ui</file>
+        <file>calibrator.ui</file>
+    </variable>
+</project>
