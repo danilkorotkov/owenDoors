@@ -270,7 +270,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     Fan1Time = FT
 
     file_name_1 = ''
-    file_name_2 = ''
 
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
@@ -402,7 +401,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
 
     @pyqtSlot()
     def DoMainWork(self):
-        global file_name_1, file_name_2
+        global file_name_1
         i = 0
         self.CleanAir()
         # it=0
