@@ -34,12 +34,12 @@ portName = '/dev/ttyUSB0'
 baudRate = 57600
 
 pwmPeriodReg = 32
-Cont1 = 1
-Fan1 = 2
+Cont1 = 2
+Fan1 = 1
 SSRPwm0 = 0 #owen MU offset
 portTuple = (u'ТТР линии',
              u'Вентилятор  линии',
-             u'Контактор  линии'
+             u'Контактор  линии',
              u'Нет подключения',
              u'Нет подключения',
              u'Нет подключения',
@@ -410,7 +410,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def DoMainWork(self):
         global file_name_1
         i = 0
-        lim = 1.0
 
         self.CleanAir()
         # it=0
@@ -511,37 +510,24 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                     if self.Fan1_On:
                         pass
                     else:
-                        self.SetFans(1)
+                        self.SetFans()
                 elif self.Fan1Time == 0:
                     self.Fan1Interval = FI
                     self.Fan1Time = FT
                     if self.Fan1_On:
-                        self.SetFans(1)
+                        self.SetFans()
                     else:
                         pass
 
-    def SetFans(self, Line=0):  # триггер вентиляторов
-        if Line == 1:
-            if self.Fan1_On == 0:
-                self.Fan1_On = 1
-                self.pwmSet(Fan1, self.Fan1_On)
-                self.Fan1.setIcon(self.iconOn)
-            else:
-                self.Fan1_On = 0
-                self.pwmSet(Fan1, self.Fan1_On)
-                self.Fan1.setIcon(self.iconOff)
-
+    def SetFans(self):  # триггер вентиляторов
+        if self.Fan1_On == 0:
+            self.Fan1.setIcon(self.iconOn)
+            self.Fan1_On = 1
+            self.pwmSet(Fan1, self.Fan1_On)
         else:
-            sender = self.sender()
-            if sender == self.Fan1:
-                if self.Fan1_On == 0:
-                    sender.setIcon(self.iconOn)
-                    self.Fan1_On = 1
-                    self.pwmSet(Fan1, self.Fan1_On)
-                else:
-                    sender.setIcon(self.iconOff)
-                    self.Fan1_On = 0
-                    self.pwmSet(Fan1, self.Fan1_On)
+            self.Fan1.setIcon(self.iconOff)
+            self.Fan1_On = 0
+            self.pwmSet(Fan1, self.Fan1_On)
 
     def setWorkzonePassive(self, point):  # ожидающая рабочая зона
         if point == '1':
