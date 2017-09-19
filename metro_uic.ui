@@ -152,7 +152,7 @@ background-color: rgb(114, 208, 244);
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.SF NS Text'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'HelveticaNeueCyr'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Free Helvetian'; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="textInteractionFlags">
@@ -163,9 +163,9 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>327</x>
-      <y>124</y>
+      <y>100</y>
       <width>611</width>
-      <height>76</height>
+      <height>71</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -187,7 +187,7 @@ p, li { white-space: pre-wrap; }
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 48pt &quot;Free Helvetian&quot;;
+     <string notr="true">font: 40pt &quot;Free Helvetian&quot;;
   color: white;
 
 </string>
@@ -714,58 +714,6 @@ color:black;
      </size>
     </property>
    </widget>
-   <widget class="QLabel" name="Progs_1">
-    <property name="geometry">
-     <rect>
-      <x>824</x>
-      <y>50</y>
-      <width>491</width>
-      <height>76</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="cursor">
-     <cursorShape>ArrowCursor</cursorShape>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="contextMenuPolicy">
-     <enum>Qt::NoContextMenu</enum>
-    </property>
-    <property name="acceptDrops">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 48pt &quot;Free Helvetian&quot;;
-  color: white;
-
-</string>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;ПРОГРАММЫ&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::AutoText</enum>
-    </property>
-    <property name="scaledContents">
-     <bool>false</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-    <property name="margin">
-     <number>-14</number>
-    </property>
-    <property name="indent">
-     <number>0</number>
-    </property>
-   </widget>
    <widget class="QPushButton" name="Over_Heat_Ctrl_1">
     <property name="geometry">
      <rect>
@@ -856,58 +804,6 @@ color:black;
       <width>26</width>
       <height>80</height>
      </size>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Set1">
-    <property name="geometry">
-     <rect>
-      <x>-30</x>
-      <y>50</y>
-      <width>491</width>
-      <height>76</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="cursor">
-     <cursorShape>ArrowCursor</cursorShape>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="contextMenuPolicy">
-     <enum>Qt::NoContextMenu</enum>
-    </property>
-    <property name="acceptDrops">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 48pt &quot;Free Helvetian&quot;;
-  color: white;
-
-</string>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;ПАРАМЕТРЫ&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::AutoText</enum>
-    </property>
-    <property name="scaledContents">
-     <bool>false</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-    <property name="margin">
-     <number>-14</number>
-    </property>
-    <property name="indent">
-     <number>0</number>
     </property>
    </widget>
    <widget class="QPushButton" name="Sensor1_2">
@@ -1338,7 +1234,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>323</x>
-      <y>530</y>
+      <y>500</y>
       <width>611</width>
       <height>76</height>
      </rect>
@@ -1362,7 +1258,7 @@ p, li { white-space: pre-wrap; }
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 48pt &quot;Free Helvetian&quot;;
+     <string notr="true">font: 40pt &quot;Free Helvetian&quot;;
   color: white;
 
 </string>
@@ -1389,8 +1285,6 @@ p, li { white-space: pre-wrap; }
    <zorder>Channel1</zorder>
    <zorder>Channel3</zorder>
    <zorder>Channel2</zorder>
-   <zorder>Set1</zorder>
-   <zorder>Progs_1</zorder>
    <zorder>StartButton1</zorder>
    <zorder>StopButton1</zorder>
    <zorder>MainTemp1</zorder>

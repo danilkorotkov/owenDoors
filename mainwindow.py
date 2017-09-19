@@ -34,7 +34,7 @@ portName = '/dev/ttyUSB0'
 baudRate = 57600
 
 pwmPeriodReg = 32
-Cont1 = 2
+Cont1 = 1
 Fan1 = 2
 SSRPwm0 = 0 #owen MU offset
 portTuple = (u'ТТР линии',
@@ -85,14 +85,20 @@ MMU.debug = False
 MMU.serial.baudrate = baudRate
 
 try:
-    MMU.write_register(pwmPeriodReg + SSRPwm0, Freq)
-    print 'Корректный период ШИМ'
-    mModInitStr += u'Корректный период ШИМ,'
-except IOError:
-    try:
+    if MMU.read_register(pwmPeriodReg + SSRPwm0) <> Freq:
         MMU.write_register(pwmPeriodReg + SSRPwm0, Freq)
         print 'Корректный период ШИМ'
         mModInitStr += u'Корректный период ШИМ,'
+    else:
+        mModInitStr += u'Корректировка ШИМ не нужна,'
+except IOError:
+    try:
+        if MMU.read_register(pwmPeriodReg + SSRPwm0) <> Freq:
+            MMU.write_register(pwmPeriodReg + SSRPwm0, Freq)
+            print 'Корректный период ШИМ'
+            mModInitStr += u'Корректный период ШИМ,'
+        else:
+            mModInitStr += u'Корректировка ШИМ не нужна,'
     except IOError:
         print 'Ошибка установки периода ШИМ'
         mModInitStr += u'Ошибка установки периода ШИМ,'
@@ -241,6 +247,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                        [0.0, 0],
                        [0.0, 0]])
     T1 = t1 = 0
+    Tmax = 220 # предел ТЭНов
     TRate1 = []  # log набора температуры
     deltaTRate1 = 0  # хранение текущей скорости роста температуры
     iconOn = QtGui.QIcon()
@@ -263,8 +270,8 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     countdown1 = 0
     level = [0 /100, 25 / 100, 50 / 100, 75 / 100, 100 / 100]
 
-    FI = 300
-    FT = 15
+    #FI = 300
+    #FT = 15
 
     Fan1Interval = FI  # запуск по 15 через 300 сек
     Fan1Time = FT
@@ -403,8 +410,16 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def DoMainWork(self):
         global file_name_1
         i = 0
+        lim = 1.0
+
         self.CleanAir()
         # it=0
+
+        if sets['OH_ctrl_1'] == 1 and self.Heater1 > self.Tmax:
+            lim = 0.0
+        else: lim = 1.0
+
+
         if self.justStarted1 == 0 and self.Line_65:
             self.startTime1 = datetime.datetime.now()
             self.justStarted1 = 1
@@ -418,28 +433,28 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                 delta1 = str(datetime.datetime.now() - self.startTime1)[:7]
                 # ----проверяем границы температура относительно уставки
                 if self.MTemp1 < (self.T1 - 15):
-                    self.pwmSet(SSRPwm0, self.level[4])
-                    i = self.level[4] * 100
+                    self.pwmSet(SSRPwm0, self.level[4] * lim)
+                    i = self.level[4] * 100  * lim
                     self.InfoPanel1.setHtml(metrocss.SetInfoPanelText(self.WorkText + delta1 + " " + str(i) + "%"))
 
                 elif (self.T1 - 15) <= self.MTemp1 < self.T1:
                     if self.deltaTRate1 >= 5:
-                        self.pwmSet(SSRPwm0, self.level[0])
-                        i = self.level[0]  * 100
+                        self.pwmSet(SSRPwm0, self.level[0] * lim)
+                        i = self.level[0]  * 100 * lim
                     elif 3 <= self.deltaTRate1 < 5:
-                        self.pwmSet(SSRPwm0, self.level[1])
-                        i = self.level[1] * 100
+                        self.pwmSet(SSRPwm0, self.level[1] * lim)
+                        i = self.level[1] * 100 * lim
                     elif 1 <= self.deltaTRate1 < 3:
-                        self.pwmSet(SSRPwm0, self.level[2])
-                        i = self.level[2] * 100
+                        self.pwmSet(SSRPwm0, self.level[2] * lim)
+                        i = self.level[2] * 100 * lim
                     elif self.deltaTRate1 < 1:
-                        self.pwmSet(SSRPwm0, self.level[4])
-                        i = self.level[4] * 100
+                        self.pwmSet(SSRPwm0, self.level[4] * lim)
+                        i = self.level[4] * 100 * lim
 
                     self.InfoPanel1.setHtml(metrocss.SetInfoPanelText(self.WorkText + delta1 + " " + str(i) + "%"))
                 # ----уходим на выдержку-------------------------
                 elif self.MTemp1 >= self.T1:
-                    self.pwmSet(SSRPwm0, self.level[0])
+                    self.pwmSet(SSRPwm0, self.level[0] * lim)
                     self.State1 = 1
                     self.startTime1 = datetime.datetime.now()
                     self.countdown1 = datetime.timedelta(minutes=self.t1)
@@ -455,20 +470,20 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                     delta1 = str((self.countdown1 - delta1))[:7]
 
                     if self.MTemp1 >= self.T1:
-                        self.pwmSet(SSRPwm0, self.level[0])
-                        i = self.level[0] * 100
+                        self.pwmSet(SSRPwm0, self.level[0] * lim)
+                        i = self.level[0] * 100 * lim
                     elif (self.T1 - 1) <= self.MTemp1 < self.T1:
-                        self.pwmSet(SSRPwm0, self.level[1])
-                        i = self.level[1] * 100
+                        self.pwmSet(SSRPwm0, self.level[1] * lim)
+                        i = self.level[1] * 100 * lim
                     elif (self.T1 - 2) <= self.MTemp1 < (self.T1 - 1):
-                        self.pwmSet(SSRPwm0, self.level[2])
-                        i = self.level[2] * 100
+                        self.pwmSet(SSRPwm0, self.level[2] * lim)
+                        i = self.level[2] * 100 * lim
                     elif (self.T1 - 4) <= self.MTemp1 < (self.T1 - 2):
-                        self.pwmSet(SSRPwm0, self.level[3])
-                        i = self.level[3] * 100
+                        self.pwmSet(SSRPwm0, self.level[3] * lim)
+                        i = self.level[3] * 100 * lim
                     elif (self.T1 - 4) > self.MTemp1:
-                        self.pwmSet(SSRPwm0, self.level[4])
-                        i = self.level[4] * 100
+                        self.pwmSet(SSRPwm0, self.level[4] * lim)
+                        i = self.level[4] * 100 * lim
                     self.InfoPanel1.setHtml(metrocss.SetInfoPanelText(self.DelayText + delta1 + " " + str(i) + "%"))
 
                 # --------работа сделана------------------------
@@ -735,9 +750,9 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
             self.Channel1.setHtml(metrocss.Show_temp(Tin[1][0]))
             self.Channel2.setHtml(metrocss.Show_temp("NaN"))
 
-        self.Channel3.setHtml(metrocss.Show_temp(Tin[3][0]))  # Тэны всегда!
-
         self.Heater1 = Tin[3][0]
+
+        self.Channel3.setHtml(metrocss.Show_temp(self.Heater1))  # Тэны всегда!
 
         # -------------работаем со стеком значений температур---------
         if self.coldStart == 0:
