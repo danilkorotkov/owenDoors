@@ -9,7 +9,7 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import pyqtSlot, QObject, SIGNAL
 import numpy as np
 
-#-----------------owen protocol-------------------------
+#-----------------owen protcocol-------------------------
 from TOwen import Owen
 from TSystem import MySerial
 
@@ -34,17 +34,18 @@ portName = '/dev/ttyUSB0'
 baudRate = 57600
 
 pwmPeriodReg = 32
+Bell1=3
 Cont1 = 1
 Fan1 = 2
 SSRPwm0 = 0 #owen MU offset
 portTuple = (u'ТТР линии',
              u'Вентилятор  линии',
-             u'Контактор  линии'
-             u'Нет подключения',
-             u'Нет подключения',
-             u'Нет подключения',
-             u'Нет подключения',
-             u'Нет подключения')
+             u'Контактор  линии',
+             u'Звонок',
+             u'4',
+             u'5',
+             u'6',
+             u'7')
 
 Freq = 5 #pwm period
 sets = {}
@@ -62,7 +63,7 @@ def s_log(a):
 
 # ---------------instrument settings--------------------------------
 try:
-    COM = MySerial.ComPort(portName, baudRate, timeout=0.05)
+    COM = MySerial.ComPort(portName, baudRate, timeout=0.07)
 except:
     raise Exception('Error openning port!')
 
@@ -91,7 +92,7 @@ try:
         mModInitStr += u'Корректный период ШИМ,'
     else:
         mModInitStr += u'Корректировка ШИМ не нужна,'
-except IOError:
+except IOError, ValueError:
     try:
         if MMU.read_register(pwmPeriodReg + SSRPwm0) <> Freq:
             MMU.write_register(pwmPeriodReg + SSRPwm0, Freq)
@@ -99,7 +100,7 @@ except IOError:
             mModInitStr += u'Корректный период ШИМ,'
         else:
             mModInitStr += u'Корректировка ШИМ не нужна,'
-    except IOError:
+    except IOError, ValueError:
         print 'Ошибка установки периода ШИМ'
         mModInitStr += u'Ошибка установки периода ШИМ,'
 
@@ -107,22 +108,38 @@ try:
     MMU.write_register(SSRPwm0, 0)
     MMU.write_register(Fan1, 0)
     MMU.write_register(Cont1, 0)
+    MMU.write_register(Bell1, 0)
     print 'Порты в нуле'
     mModInitStr += u' Порты в нуле'
-except IOError:
+except IOError, ValueError:
     try:
         MMU.write_register(SSRPwm0, 0)
         MMU.write_register(Fan1, 0)
         MMU.write_register(Cont1, 0)
+        MMU.write_register(Bell1, 0)
         print 'Порты в нуле'
         mModInitStr += u' Порты в нуле'
-    except IOError:
+    except IOError, ValueError:
         print 'Ошибка установки портов'
         mModInitStr += u' Ошибка установки портов'
 
 s_log(mModInitStr)
 
 # --------------temp measure-----------------------
+class BellThread(QtCore.QThread):  # работа с звонком в потоке
+    def __init__(self, bell_signal, parent=None):
+        super(BellThread, self).__init__(parent)
+        self.bell_signal = bell_signal
+        self.isRun = False
+
+    def run(self):
+        if self.isRun:
+            time.sleep(5)
+            self.bell_signal.emit()
+
+    def stop(self):
+        self.isRun = False
+
 class TempThread(QtCore.QThread):  # работа с АЦП в потоке
     def __init__(self, temp_signal, parent=None):
         super(TempThread, self).__init__(parent)
@@ -239,6 +256,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     temp_signal = QtCore.pyqtSignal(np.ndarray)
     time_signal = QtCore.pyqtSignal(list)
     user_data_signal = QtCore.pyqtSignal(int, int)
+    bell_signal = QtCore.pyqtSignal()
     lock_signal = QtCore.pyqtSignal()
 
     Fan1_On = 0  # fan on/off = 0/1
@@ -328,6 +346,11 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
 
 
     # ----------------------------methods------------------------------
+    def bell_ring(self):
+        self.bellthread.isRun = False
+        self.bellthread.stop()
+        self.pwmSet(Bell1, 0)
+    
     def pwmSet(self, port, value, Stop = False):
         '''
         управляем включением внешних устройств (ШИМ или просто вкл/выкл)
@@ -348,7 +371,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
 
         while portIsBusy:
             print 'pwm busy', portIsBusy
-            time.sleep(0.05)
+            time.sleep(0.1)
         portIsBusy = True
         try:
             print 'r.OE '+ portTuple[port], MU.writeFloat24('r.OE', port, value)
@@ -497,6 +520,9 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                     self.State1 = 0
                     self.justStarted1 = 0
                     self.pwmSet(Cont1, 0)
+                    self.pwmSet(Bell1, 1)
+                    self.bellthread.isRun = True
+                    self.bellthread.start()
             save_log(file_name_1, self.MTemp1, i, self.State1, self.Fan1_On, self.Heater1)
 
 
@@ -606,6 +632,21 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                 if self.Fan1_On: self.SetFans(1)
 
     def All_is_Clear(self):  # корректное завершение
+        try:
+            self.pwmSet(SSRPwm0, 0)
+            self.pwmSet(Fan1, 0)
+            self.pwmSet(Cont1, 0)
+            self.pwmSet(Bell1, 0)
+            print 'Порты в нуле'
+        except IOError, ValueError:
+            try:
+                self.pwmSet(SSRPwm0, 0)
+                self.pwmSet(Fan1, 0)
+                self.pwmSet(Cont1, 0)
+                self.pwmSet(Bell1, 0)
+                print 'Порты в нуле'
+            except IOError, ValueError:
+                print 'Ошибка установки портов'
         self.tempthreadcontrol(0)
         self.timelabel.stop()
         self.close()
@@ -843,6 +884,13 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self.time_signal.connect(self.time_msg, QtCore.Qt.QueuedConnection)
         self.timelabel.isRun = True
         self.timelabel.start()
+        
+        #---------------bell--------------------------
+        self.bellthread = BellThread(self.bell_signal)
+        self.bell_signal.connect(self.bell_ring, QtCore.Qt.QueuedConnection)
+        self.bellthread.isRun = False
+        self.bellthread.start()
+        
         # ---------initial default prog set-----------
         if sets['start_prog1'] == 1:
             self.set_prog(1, 1)

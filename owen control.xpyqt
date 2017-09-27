@@ -32,6 +32,7 @@
         <file>timelabel.py</file>
         <file>TOwen/Owen.py</file>
         <file>TOwen/owenProtocol.py</file>
+        <file>TSystem/MySerial.py</file>
     </variable>
     <variable name="FORMS">
         <file>metro_uic.ui</file>
