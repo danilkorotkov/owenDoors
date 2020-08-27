@@ -34,11 +34,6 @@ portName = '/dev/ttyUSB0'
 baudRate = 57600
 
 pwmPeriodReg = 32
-<<<<<<< HEAD
-Bell1=3
-Cont1 = 1
-Fan1 = 2
-=======
 Cont1 = 2
 Fan1 = 1
 SSRPwm0 = 0 #owen MU offset
