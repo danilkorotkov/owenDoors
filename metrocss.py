@@ -20,7 +20,7 @@ a = {
     'start_prog1':1,
     'OH_ctrl_1':1,
     'sensor1_1':1,
-    'sensor2_1':1,
+    'sensor1_2':1,
     'Fan1_Allow':1,
     'Counter1':0,
 }
